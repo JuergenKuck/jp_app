@@ -1,14 +1,15 @@
 name: jp_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
-  sdk: ^3.7.2
+  sdk: ^3.6.0
 
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +18,14 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/svgs/
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
+          weight: 100
+        - asset: assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf
+          weight: 100
