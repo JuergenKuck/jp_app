@@ -45,9 +45,10 @@ class Home extends StatelessWidget {
               fit: BoxFit.fitWidth,
             ),
           ),
+
           Positioned(
-            left: 27,
-            top: 606,
+            left: 16,
+            top: 597,
             child: // Blur Rechteck
                 Center(
               child: ClipRRect(
@@ -56,24 +57,57 @@ class Home extends StatelessWidget {
                   filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                   child: Container(
                     width: 370,
-                    height: 240,
+                    height: 230,
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.1), // halbtransparent
+                      color: Colors.white.withValues(alpha: 0.05), // halbtransparent
                       borderRadius: BorderRadius.circular(33),
-                      border: Border.all(color: Colors.white.withOpacity(0.2)),
+                      border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
                     ),
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Blur Box',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    alignment: Alignment.topCenter,
+                    child: Column(
+                      children: [
+                        SizedBox(height: 68),
+                        Text(
+                          'Explore Angi’s most popular snack selection',
+                          style: TextStyle(
+                            color: Color(0x99EBEBF5),
+                            fontFamily: 'Inter',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        Text(
+                          'and get instantly happy.',
+                          style: TextStyle(
+                            color: Color(0x99EBEBF5),
+                            fontFamily: 'Inter',
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: -0.09 * 4,
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        GestureDetector(
+                          onTap: () {},
+                          child: SvgPicture.asset(
+                            'assets/svgs/button_screen1.svg',
+                            width: 252,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
+            ),
+          ),
+          Positioned(
+            right: 0,
+            top: 580,
+            child: SvgPicture.asset(
+              'assets/svgs/Feeling Snackish Today_.svg',
+              width: 425,
+              fit: BoxFit.fitWidth,
             ),
           ),
         ],

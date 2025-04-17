@@ -26,6 +26,7 @@ flutter:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter-VariableFont_opsz,wght.ttf
-          weight: 100
+          weight: 900
         - asset: assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf
           weight: 100
+        - asset: assets/fonts/Inter-Italic-VariableFont_opsz,wght.ttf
