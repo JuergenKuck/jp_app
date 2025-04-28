@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:jp_app/src/common/presentation/my_container.dart';
+import 'package:jp_app/src/order_screen.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -23,7 +25,7 @@ class Home extends StatelessWidget {
             right: 0,
             top: 00,
             child: SvgPicture.asset(
-              'assets/svgs/t1_screen1.svg',
+              'assets/svgs/t1_screens.svg',
               fit: BoxFit.cover,
             ),
           ),
@@ -40,7 +42,7 @@ class Home extends StatelessWidget {
             right: 0,
             top: 468,
             child: SvgPicture.asset(
-              'assets/svgs/t2_screen1.svg',
+              'assets/svgs/t2_screens.svg',
               width: 425,
               fit: BoxFit.fitWidth,
             ),
@@ -88,10 +90,20 @@ class Home extends StatelessWidget {
                         ),
                         SizedBox(height: 16),
                         GestureDetector(
-                          onTap: () {},
-                          child: SvgPicture.asset(
-                            'assets/svgs/button_screen1.svg',
-                            width: 252,
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => OrderScreen()),
+                            );
+                          },
+                          child: MyContainer(
+                            text: 'Order Now',
+                            width: 222,
+                            fontSize: 18.7,
+                            strokeColorStart: Color(0xFFef3ed6),
+                            strokeColorEnd: Color(0xFFf0c7eb),
+                            containerColorStart: Color(0xFFF69EA3), // starting color (center)
+                            containerColorEnd: Color(0xFFE970C4), // ending color (edges)
                           ),
                         ),
                       ],
