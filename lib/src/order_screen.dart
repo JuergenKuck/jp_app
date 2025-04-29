@@ -3,7 +3,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:jp_app/src/common/presentation/my_cup.dart';
+import 'package:jp_app/src/common/cup_loader.dart';
+import 'package:jp_app/src/common/presentation/cup_container.dart';
 import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
 import 'package:jp_app/src/home.dart';
@@ -37,7 +38,7 @@ class OrderScreen extends StatelessWidget {
           ),
           Positioned(
             right: -40,
-            top: 400,
+            top: 420,
             child: Opacity(
               opacity: .04,
               child: SvgPicture.asset(
@@ -238,7 +239,7 @@ class OrderScreen extends StatelessWidget {
           ),
           Positioned(
             left: 22,
-            top: 520,
+            top: 540,
             child: Text(
               'We Recommend',
               style: TextStyle(
@@ -252,8 +253,28 @@ class OrderScreen extends StatelessWidget {
           ),
           Positioned(
             left: 22,
-            top: 550,
-            child: MyCup(width: 208, height: 288),
+            top: 570,
+            child: SizedBox(
+              height: 260,
+              width: 360,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: cups.length,
+                itemBuilder: (context, index) {
+                  return GestureDetector(
+                    onTap: () {
+                      // Dein Klickereignis hier
+                      print('Cup ${cups[index].name} wurde angeklickt');
+                      // oder z.B. Navigator.push(...) oder setState(...)
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 16),
+                      child: CupContainer(cup: cups[index]),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
         ],
       ),
