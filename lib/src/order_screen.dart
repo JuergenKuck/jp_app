@@ -3,6 +3,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:jp_app/src/common/presentation/my_cup.dart';
+import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
 import 'package:jp_app/src/home.dart';
 
@@ -35,7 +37,7 @@ class OrderScreen extends StatelessWidget {
           ),
           Positioned(
             right: -40,
-            top: 480,
+            top: 400,
             child: Opacity(
               opacity: .04,
               child: SvgPicture.asset(
@@ -54,7 +56,7 @@ class OrderScreen extends StatelessWidget {
               child: ClipPath(
                 clipper: _CustomShapeClipper(),
                 child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+                  filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
                   child: CustomPaint(
                     painter: _BorderPainter(
                       Color(0x40FFFFFF),
@@ -75,19 +77,33 @@ class OrderScreen extends StatelessWidget {
                                   'Angi’s Yummy Burger ',
                                   style: TextStyle(
                                     color: Color(0xFFFFFFFF),
-                                    fontFamily: 'Inter',
+                                    fontFamily: 'SFProDisplay',
                                     fontSize: 16.5,
-                                    fontWeight: FontWeight.w800,
+                                    fontWeight: FontWeight.w700,
+                                    letterSpacing: 0.38,
                                   ),
                                 ),
-                                Text(
-                                  '4.8',
-                                  style: TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    fontFamily: 'Inter',
-                                    fontSize: 12.07,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                Row(
+                                  children: [
+                                    Text(
+                                      '􀋃',
+                                      style: TextStyle(
+                                        color: Color(0xFFef82b5),
+                                        fontFamily: 'SFProDisplay',
+                                        fontSize: 12.07,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    Text(
+                                      '4.8',
+                                      style: TextStyle(
+                                        color: Color(0xFFFFFFFF),
+                                        fontFamily: 'SFProDisplay',
+                                        fontSize: 12.07,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -96,7 +112,7 @@ class OrderScreen extends StatelessWidget {
                               'Delish vegan burger',
                               style: TextStyle(
                                 color: Color(0xFFFFFFFF),
-                                fontFamily: 'Inter',
+                                fontFamily: 'SFProDisplay',
                                 fontSize: 13.17,
                                 fontWeight: FontWeight.w500,
                               ),
@@ -105,19 +121,21 @@ class OrderScreen extends StatelessWidget {
                               'that tastes like heaven',
                               style: TextStyle(
                                 color: Color(0xFFFFFFFF),
-                                fontFamily: 'Inter',
+                                fontFamily: 'SFProDisplay',
                                 fontSize: 13.17,
                                 fontWeight: FontWeight.w500,
+                                letterSpacing: 0.38,
                               ),
                             ),
                             SizedBox(height: 16),
                             Text(
-                              '€ 13.99',
+                              '₳ 13.99',
                               style: TextStyle(
                                 color: Color(0xFFFFFFFF),
-                                fontFamily: 'Inter',
+                                fontFamily: 'SFProDisplay',
                                 fontSize: 16.5,
-                                fontWeight: FontWeight.w800,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.38,
                               ),
                             ),
                           ],
@@ -132,7 +150,7 @@ class OrderScreen extends StatelessWidget {
 
           Positioned(
             left: 40,
-            top: 450,
+            top: 430,
             child: GestureDetector(
               onTap: () {
                 Navigator.push(
@@ -155,12 +173,87 @@ class OrderScreen extends StatelessWidget {
 
           Positioned(
             left: 145,
-            top: 310,
+            top: 290,
             child: Image.asset(
               'assets/images/burger_3d.png',
               width: 238,
               fit: BoxFit.fitWidth,
             ),
+          ),
+          Positioned(
+            left: 22,
+            top: 90,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              spacing: 0,
+              children: [
+                Text(
+                  'Choose Your Favorite ',
+                  style: TextStyle(
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'Inter',
+                    fontSize: 24,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 0.38,
+                  ),
+                ),
+                Text(
+                  'Snack',
+                  style: TextStyle(
+                    color: Color(0xFFFFFFFF),
+                    fontFamily: 'Inter',
+                    fontSize: 24,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 0.38,
+                  ),
+                ),
+                SizedBox(height: 16),
+                Row(
+                  spacing: 8,
+                  children: [
+                    MyGlasRect(
+                      width: 155,
+                      height: 44,
+                      text: '􀻐 All categories 􀆈',
+                    ),
+                    MyGlasRect(
+                      width: 93,
+                      height: 44,
+                      text: 'Salty',
+                    ),
+                    MyGlasRect(
+                      width: 93,
+                      height: 44,
+                      text: 'Sweet',
+                    ),
+                    MyGlasRect(
+                      width: 93,
+                      height: 44,
+                      text: 'Drinks',
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+          Positioned(
+            left: 22,
+            top: 520,
+            child: Text(
+              'We Recommend',
+              style: TextStyle(
+                color: Color(0xFFFFFFFF),
+                fontFamily: 'Inter',
+                fontSize: 18,
+                fontWeight: FontWeight.w900,
+                letterSpacing: 0.38,
+              ),
+            ),
+          ),
+          Positioned(
+            left: 22,
+            top: 550,
+            child: MyCup(width: 208, height: 288),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
+import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
 import 'package:jp_app/src/order_screen.dart';
 
 class Home extends StatelessWidget {
@@ -51,75 +52,65 @@ class Home extends StatelessWidget {
           Positioned(
             left: 16,
             top: 597,
-            child: // Blur Rechteck
-                Center(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(33),
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
-                  child: Container(
-                    width: 370,
-                    height: 230,
-                    decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.05), // halbtransparent
-                      borderRadius: BorderRadius.circular(33),
-                      border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
+            child: Center(
+              child: MyGlasRect(
+                width: 370,
+                height: 230,
+                child: Column(
+                  children: [
+                    SizedBox(height: 30),
+                    Text(
+                      'Feeling Snackish Today?',
+                      style: TextStyle(
+                        color: Color(0xFFFFFFFF),
+                        fontFamily: 'Inter',
+                        fontSize: 24,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: .38,
+                      ),
                     ),
-                    alignment: Alignment.topCenter,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 68),
-                        Text(
-                          'Explore Angi’s most popular snack selection',
-                          style: TextStyle(
-                            color: Color(0x99EBEBF5),
-                            fontFamily: 'Inter',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        Text(
-                          'and get instantly happy.',
-                          style: TextStyle(
-                            color: Color(0x99EBEBF5),
-                            fontFamily: 'Inter',
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            letterSpacing: -0.09 * 4,
-                          ),
-                        ),
-                        SizedBox(height: 16),
-                        GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => OrderScreen()),
-                            );
-                          },
-                          child: MyContainer(
-                            text: 'Order Now',
-                            width: 222,
-                            fontSize: 18.7,
-                            strokeColorStart: Color(0xFFef3ed6),
-                            strokeColorEnd: Color(0xFFf0c7eb),
-                            containerColorStart: Color(0xFFF69EA3), // starting color (center)
-                            containerColorEnd: Color(0xFFE970C4), // ending color (edges)
-                          ),
-                        ),
-                      ],
+                    SizedBox(height: 10),
+                    Text(
+                      'Explore Angi’s most popular snack selection',
+                      style: TextStyle(
+                        color: Color(0x99EBEBF5),
+                        fontFamily: 'Inter',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.09,
+                      ),
                     ),
-                  ),
+                    Text(
+                      'and get instantly happy.',
+                      style: TextStyle(
+                        color: Color(0x99EBEBF5),
+                        fontFamily: 'Inter',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        letterSpacing: -0.09,
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => OrderScreen()),
+                        );
+                      },
+                      child: MyContainer(
+                        text: 'Order Now',
+                        width: 222,
+                        fontSize: 18.7,
+                        strokeColorStart: Color(0xFFef3ed6),
+                        strokeColorEnd: Color(0xFFf0c7eb),
+                        containerColorStart: Color(0xFFF69EA3), // starting color (center)
+                        containerColorEnd: Color(0xFFE970C4), // ending color (edges)
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ),
-          Positioned(
-            right: 0,
-            top: 580,
-            child: SvgPicture.asset(
-              'assets/svgs/Feeling Snackish Today_.svg',
-              width: 425,
-              fit: BoxFit.fitWidth,
             ),
           ),
         ],
