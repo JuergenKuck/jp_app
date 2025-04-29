@@ -1,5 +1,7 @@
+import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:jp_app/src/common/global.dart';
 
 class MyGlasRect extends StatelessWidget {
   final double width;
@@ -33,8 +35,9 @@ class MyGlasRect extends StatelessWidget {
           ),
         );
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(33),
+    double r = min(33, height / 2);
+    return ClipPath(
+      clipper: CustomShapeClipper(r: r),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
         child: Container(
@@ -43,7 +46,10 @@ class MyGlasRect extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.05), // halbtransparent
             borderRadius: BorderRadius.circular(33),
-            border: Border.all(color: Colors.white.withValues(alpha: 0.15)),
+            border: Border.all(
+              color: Color(0x99EBEBF5),
+              width: 0.60,
+            ),
           ),
           alignment: Alignment.topCenter,
           child: childOut,

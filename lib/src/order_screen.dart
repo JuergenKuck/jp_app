@@ -3,14 +3,17 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:jp_app/src/common/cup_loader.dart';
+import 'package:jp_app/src/common/global.dart';
 import 'package:jp_app/src/common/presentation/cup_container.dart';
 import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
 import 'package:jp_app/src/home.dart';
+import 'package:jp_app/src/page3.dart';
 
 class OrderScreen extends StatelessWidget {
-  const OrderScreen({super.key});
+  OrderScreen({super.key});
+
+  double dh = 45;
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +58,13 @@ class OrderScreen extends StatelessWidget {
             child: // Blur Rechteck
                 Center(
               child: ClipPath(
-                clipper: _CustomShapeClipper(),
+                clipper: CustomShapeClipper(dh: dh),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
                   child: CustomPaint(
-                    painter: _BorderPainter(
-                      Color(0x40FFFFFF),
+                    painter: BorderPainter(
+                      dh: dh,
+                      Color(0x99EBEBF5),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.only(top: 20, left: 20, right: 40),
@@ -263,9 +267,31 @@ class OrderScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      // Dein Klickereignis hier
-                      print('Cup ${cups[index].name} wurde angeklickt');
-                      // oder z.B. Navigator.push(...) oder setState(...)
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true, // ⬅️ Damit es die volle Höhe nutzen kann
+                        backgroundColor: Colors.transparent, // Optional: transparenter Hintergrund für runde Ecken
+                        builder: (BuildContext context) {
+                          return DraggableScrollableSheet(
+                            expand: false, // WICHTIG: Damit es nicht automatisch maximiert
+                            initialChildSize: 1.0, // Voller Bildschirm (1.0 = 100%)
+                            minChildSize: 1.0,
+                            maxChildSize: 1.0,
+                            builder: (_, controller) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                                ),
+                                child: SvgPicture.asset(
+                                  'assets/svgs/background3.svg',
+                                  fit: BoxFit.cover,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(right: 16),
@@ -280,87 +306,4 @@ class OrderScreen extends StatelessWidget {
       ),
     );
   }
-}
-
-Path _generatePath(Size size, {double r = 33, double dh = 45}) {
-  double w = size.width;
-  double h = size.height;
-  double al = atan2(dh, w);
-  double dy = sin(al) * r;
-  double dx = cos(al) * r;
-
-  Path path = Path();
-
-  // Startpunkt oben links
-  path.moveTo(r, 0);
-  path.lineTo(w - r, 0);
-
-  path.arcToPoint(
-    Offset(w, r),
-    radius: Radius.circular(r),
-    clockwise: true,
-  );
-
-  path.lineTo(w, h - dh - r);
-  path.arcToPoint(
-    Offset(w - dx, h - dh + dy),
-    radius: Radius.circular(r),
-    clockwise: true,
-  );
-
-  path.lineTo(dx, h - dy);
-  path.arcToPoint(
-    Offset(0, h - r),
-    radius: Radius.circular(r),
-    clockwise: true,
-  );
-
-  path.lineTo(0, r);
-  path.arcToPoint(
-    Offset(r, 0),
-    radius: Radius.circular(r),
-    clockwise: true,
-  );
-
-  path.close();
-
-  return path;
-}
-
-class _CustomShapeClipper extends CustomClipper<Path> {
-  final double r;
-  final double dh;
-
-  _CustomShapeClipper({this.r = 33, this.dh = 45});
-
-  @override
-  Path getClip(Size size) {
-    return _generatePath(size, r: r, dh: dh);
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Path> oldClipper) {
-    return false;
-  }
-}
-
-class _BorderPainter extends CustomPainter {
-  final Color borderColor;
-
-  _BorderPainter(this.borderColor);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = borderColor
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.0;
-
-    final Path path = _generatePath(size);
-
-    canvas.drawPath(path, paint);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
