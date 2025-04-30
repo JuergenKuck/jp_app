@@ -79,7 +79,7 @@ class MyContainer extends StatelessWidget {
               text,
               style: TextStyle(
                 color: Color(0xFFFFFFFF),
-                fontFamily: 'Inter',
+                fontFamily: 'SFProDisplay',
                 fontSize: fontSize,
                 fontWeight: FontWeight.w800,
               ),

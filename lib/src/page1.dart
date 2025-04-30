@@ -1,13 +1,11 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
 import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
-import 'package:jp_app/src/order_screen.dart';
+import 'package:jp_app/src/page2.dart';
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Page1 extends StatelessWidget {
+  const Page1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +93,7 @@ class Home extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => OrderScreen()),
+                          MaterialPageRoute(builder: (context) => Page2()),
                         );
                       },
                       child: MyContainer(

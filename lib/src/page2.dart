@@ -1,19 +1,18 @@
-import 'dart:math';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:jp_app/src/common/global.dart';
+import 'package:jp_app/src/common/presentation/button_sheet_page2.dart';
 import 'package:jp_app/src/common/presentation/cup_container.dart';
 import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
-import 'package:jp_app/src/home.dart';
-import 'package:jp_app/src/page3.dart';
+import 'package:jp_app/src/page1.dart';
 
-class OrderScreen extends StatelessWidget {
-  OrderScreen({super.key});
+class Page2 extends StatelessWidget {
+  const Page2({super.key});
 
-  double dh = 45;
+  final double dh = 45;
 
   @override
   Widget build(BuildContext context) {
@@ -160,7 +159,7 @@ class OrderScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Home()),
+                  MaterialPageRoute(builder: (context) => Page1()),
                 );
               },
               child: MyContainer(
@@ -267,31 +266,7 @@ class OrderScreen extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true, // ⬅️ Damit es die volle Höhe nutzen kann
-                        backgroundColor: Colors.transparent, // Optional: transparenter Hintergrund für runde Ecken
-                        builder: (BuildContext context) {
-                          return DraggableScrollableSheet(
-                            expand: false, // WICHTIG: Damit es nicht automatisch maximiert
-                            initialChildSize: 1.0, // Voller Bildschirm (1.0 = 100%)
-                            minChildSize: 1.0,
-                            maxChildSize: 1.0,
-                            builder: (_, controller) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-                                ),
-                                child: SvgPicture.asset(
-                                  'assets/svgs/background3.svg',
-                                  fit: BoxFit.cover,
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      );
+                      buttonSheetPage2(context, cups[index]);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(right: 16),

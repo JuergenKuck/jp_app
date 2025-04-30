@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:jp_app/src/common/domain/cup.dart';
@@ -8,13 +7,17 @@ List<Cup> cups = [
   Cup(
     name: 'Mogli’s Cup',
     description: 'Strawberry ice cream',
+    comment:
+        'Mogli’s Cup is a delightful treat featuring rich, creamy strawberry ice cream made with real fruit for a naturally sweet flavor. Its smooth texture and vibrant taste make it a refreshing indulgence perfect for any time of day.',
     price: 8.99,
     numberLikes: 200,
-    imagePath: 'assets/images/cat cupcakes_3d.png',
+    imagePath: 'assets/images/moglis_cup.png',
   ),
   Cup(
     name: "Balu's Cup",
     description: "Pistachio ice cream",
+    comment:
+        'Balu’s Cup offers a smooth and nutty pistachio ice cream crafted with premium roasted pistachios. Its rich, velvety texture makes it a luxurious choice for nut lovers seeking something indulgent and satisfying.',
     price: 8.99,
     numberLikes: 165,
     imagePath: "assets/images/balus_cup.png",
@@ -22,6 +25,8 @@ List<Cup> cups = [
   Cup(
     name: "Smiling David",
     description: "Coffee ice cream",
+    comment:
+        'Smiling David is a bold and creamy coffee ice cream, infused with real espresso for a deep, aromatic kick. It’s the perfect pick-me-up dessert, balancing rich coffee flavor with a smooth, satisfying finish.',
     price: 3.99,
     numberLikes: 310,
     imagePath: "assets/images/smiling_david.png",
@@ -29,6 +34,8 @@ List<Cup> cups = [
   Cup(
     name: "Kai in a Cone",
     description: "Vanilla ice cream",
+    comment:
+        'Kai in a Cone is a classic vanilla ice cream, crafted with real vanilla beans for a pure, smooth flavor that never goes out of style. Its creamy texture and timeless taste make it a favorite for all ages.',
     price: 3.99,
     numberLikes: 290,
     imagePath: "assets/images/kai_in_a_cone.png",

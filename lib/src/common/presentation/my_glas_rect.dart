@@ -9,6 +9,7 @@ class MyGlasRect extends StatelessWidget {
   final Widget? child;
   final String text;
   final bool isSelected;
+  final double borderRadius;
 
   const MyGlasRect({
     super.key,
@@ -17,6 +18,7 @@ class MyGlasRect extends StatelessWidget {
     this.child,
     this.text = '',
     this.isSelected = false,
+    this.borderRadius = 33,
   });
 
   @override
@@ -35,7 +37,7 @@ class MyGlasRect extends StatelessWidget {
           ),
         );
 
-    double r = min(33, height / 2);
+    double r = min(borderRadius, height / 2);
     return ClipPath(
       clipper: CustomShapeClipper(r: r),
       child: BackdropFilter(
@@ -45,7 +47,7 @@ class MyGlasRect extends StatelessWidget {
           height: height,
           decoration: BoxDecoration(
             color: Colors.white.withValues(alpha: 0.05), // halbtransparent
-            borderRadius: BorderRadius.circular(33),
+            borderRadius: BorderRadius.circular(borderRadius),
             border: Border.all(
               color: Color(0x99EBEBF5),
               width: 0.60,
