@@ -1,10 +1,9 @@
 import 'package:flutter/widgets.dart';
 
 class MyContainer extends StatelessWidget {
-  final String text;
+  final Widget text;
   final double width;
   final double height;
-  final double fontSize;
   final Color strokeColorStart;
   final Color strokeColorEnd;
   final Color containerColorStart;
@@ -15,7 +14,6 @@ class MyContainer extends StatelessWidget {
     required this.text,
     required this.width,
     this.height = 53,
-    required this.fontSize,
     required this.strokeColorStart,
     required this.strokeColorEnd,
     required this.containerColorStart,
@@ -75,15 +73,7 @@ class MyContainer extends StatelessWidget {
             ],
           ),
           child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontFamily: 'SFProDisplay',
-                fontSize: fontSize,
-                fontWeight: FontWeight.w800,
-              ),
-            ),
+            child: text,
           ),
         ),
       ),

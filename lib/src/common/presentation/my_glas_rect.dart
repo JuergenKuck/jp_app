@@ -2,6 +2,8 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:jp_app/src/common/global.dart';
+import 'package:jp_app/src/page2.dart';
+import 'package:jp_app/src/common/presentation/text12.dart';
 
 class MyGlasRect extends StatelessWidget {
   final double width;
@@ -25,15 +27,10 @@ class MyGlasRect extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget childOut = child ??
         Center(
-          child: Text(
+          child: Text12(
             text,
-            style: TextStyle(
-              color: Color(0x99EBEBF5),
-              fontFamily: 'SFProDisplay',
-              fontSize: 13.2,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.35,
-            ),
+            color: isSelected ? Colors.black : Color(0x99EBEBF5),
+            fontWeight: FontWeight.w700,
           ),
         );
 
@@ -46,7 +43,7 @@ class MyGlasRect extends StatelessWidget {
           width: width,
           height: height,
           decoration: BoxDecoration(
-            color: Colors.white.withValues(alpha: 0.05), // halbtransparent
+            color: isSelected ? Color(0xFFedc8ea) : Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(borderRadius),
             border: Border.all(
               color: Color(0x99EBEBF5),

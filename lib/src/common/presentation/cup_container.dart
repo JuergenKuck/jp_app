@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jp_app/src/common/domain/cup.dart';
+import 'package:jp_app/src/common/presentation/text14.dart';
 
 class CupContainer extends StatelessWidget {
   final double width;
@@ -40,59 +41,22 @@ class CupContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              cup.imagePath,
-              fit: BoxFit.fitWidth,
-            ),
+            Image.asset(cup.imagePath, fit: BoxFit.fitWidth),
             SizedBox(height: 8),
-            Text(
+            Text14(
               cup.name,
-              style: TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontFamily: 'SFProText',
-                fontSize: 14.3,
-                fontWeight: FontWeight.w800,
-                letterSpacing: -0.55,
-                height: 21.9 / 14.3,
-              ),
+              color: Color(0xFFFFFFFF),
+              fontWeight: FontWeight.w800,
+              letterSpacing: -0.55,
+              height: 21.9 / 14.3,
             ),
-            Text(
-              cup.description,
-              style: TextStyle(
-                color: Color(0x99EBEBF5),
-                fontFamily: 'SFProText',
-                fontSize: 13.2,
-                fontWeight: FontWeight.w500,
-                letterSpacing: 0,
-                height: 17.6 / 13.2,
-              ),
-            ),
+            Text14(cup.description, height: 17.6 / 13.2),
             SizedBox(height: 12),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '􁑐${cup.price}',
-                  style: TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontFamily: 'SFProText',
-                    fontSize: 14.3,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: -0.55,
-                    height: 21.9 / 14.3,
-                  ),
-                ),
-                Text(
-                  '􀊴 ${cup.numberLikes}',
-                  style: TextStyle(
-                    color: Color(0x99EBEBF5),
-                    fontFamily: 'SFProText',
-                    fontSize: 13.2,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0,
-                    height: 17.6 / 13.2,
-                  ),
-                ),
+                Text14('􁑐${cup.price}', color: Color(0xFFFFFFFF), letterSpacing: -0.55),
+                Text14('􀊴 ${cup.numberLikes}'),
               ],
             ),
           ],

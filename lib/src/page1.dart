@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
 import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
+import 'package:jp_app/src/common/presentation/svg_background.dart';
+import 'package:jp_app/src/common/presentation/image_positioned.dart';
+import 'package:jp_app/src/common/presentation/text18.dart';
 import 'package:jp_app/src/page2.dart';
+import 'package:jp_app/src/common/presentation/text14.dart';
+import 'package:jp_app/src/common/presentation/text24.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({super.key});
@@ -12,41 +16,10 @@ class Page1 extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          // SVG als Hintergrund
-          Positioned.fill(
-            child: SvgPicture.asset(
-              'assets/svgs/background.svg',
-              fit: BoxFit.cover,
-            ),
-          ),
-          // Vordergrund-Content
-          Positioned(
-            right: 0,
-            top: 00,
-            child: SvgPicture.asset(
-              'assets/svgs/t1_screens.svg',
-              fit: BoxFit.cover,
-            ),
-          ),
-          Positioned(
-            right: 0,
-            top: 106,
-            child: Image.asset(
-              'assets/images/chick cupcakes_3D.png',
-              width: 420,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-          Positioned(
-            right: 0,
-            top: 468,
-            child: SvgPicture.asset(
-              'assets/svgs/t2_screens.svg',
-              width: 425,
-              fit: BoxFit.fitWidth,
-            ),
-          ),
-
+          SvgBackground(imagePath: 'assets/svgs/background.svg'),
+          ImagePositioned(imagePath: 'assets/svgs/t1_screens.svg', left: 0, top: 0),
+          ImagePositioned(imagePath: 'assets/images/chick cupcakes_3D.png', left: 0, top: 96, width: 420),
+          ImagePositioned(imagePath: 'assets/svgs/t2_screens.svg', right: 0, top: 468, width: 420),
           Positioned(
             left: 16,
             top: 597,
@@ -57,37 +30,10 @@ class Page1 extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 30),
-                    Text(
-                      'Feeling Snackish Today?',
-                      style: TextStyle(
-                        color: Color(0xFFFFFFFF),
-                        fontFamily: 'Inter',
-                        fontSize: 24,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: .38,
-                      ),
-                    ),
+                    Text24('Feeling Snackish Today?'),
                     SizedBox(height: 10),
-                    Text(
-                      'Explore Angi’s most popular snack selection',
-                      style: TextStyle(
-                        color: Color(0x99EBEBF5),
-                        fontFamily: 'Inter',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -0.09,
-                      ),
-                    ),
-                    Text(
-                      'and get instantly happy.',
-                      style: TextStyle(
-                        color: Color(0x99EBEBF5),
-                        fontFamily: 'Inter',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: -0.09,
-                      ),
-                    ),
+                    Text14('Explore Angi’s most popular snack selection'),
+                    Text14('and get instantly happy.'),
                     SizedBox(height: 30),
                     GestureDetector(
                       onTap: () {
@@ -97,9 +43,8 @@ class Page1 extends StatelessWidget {
                         );
                       },
                       child: MyContainer(
-                        text: 'Order Now',
+                        text: Text18('Order Now'),
                         width: 222,
-                        fontSize: 18.7,
                         strokeColorStart: Color(0xFFef3ed6),
                         strokeColorEnd: Color(0xFFf0c7eb),
                         containerColorStart: Color(0xFFF69EA3), // starting color (center)

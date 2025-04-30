@@ -8,7 +8,7 @@ List<Cup> cups = [
     name: 'Mogli’s Cup',
     description: 'Strawberry ice cream',
     comment:
-        'Mogli’s Cup is a delightful treat featuring rich, creamy strawberry ice cream made with real fruit for a naturally sweet flavor. Its smooth texture and vibrant taste make it a refreshing indulgence perfect for any time of day.',
+        'Mogli’s Cup is a delightful creamy strawberry ice cream made with real fruit for a naturally sweet flavor. Its smooth texture and vibrant taste make it a refreshing indulgence perfect for any time of day.',
     price: 8.99,
     numberLikes: 200,
     imagePath: 'assets/images/moglis_cup.png',
