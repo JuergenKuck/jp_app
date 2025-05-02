@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:path/path.dart' as p;
+import 'package:jp_app/src/common/presentation/my_image.dart';
 
 class ImagePositionedOpacy extends StatelessWidget {
   final double? width;
@@ -24,13 +23,7 @@ class ImagePositionedOpacy extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget child;
-    String extension = p.extension(imagePath);
-    if (extension == '.svg') {
-      child = SvgPicture.asset(imagePath, width: width, fit: BoxFit.cover);
-    } else {
-      child = Image.asset(imagePath, width: width, fit: BoxFit.cover);
-    }
+    MyImage child = MyImage(imagePath: imagePath, width: width);
     Widget childOpacy = Opacity(opacity: 0.08, child: child);
     return Positioned(left: left, top: top, right: right, bottom: bottom, child: childOpacy);
   }

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:jp_app/src/common/global.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
 import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
-import 'package:jp_app/src/common/presentation/svg_background.dart';
+import 'package:jp_app/src/common/presentation/my_image.dart';
+import 'package:jp_app/src/common/presentation/my_positioned.dart';
+import 'package:jp_app/src/common/presentation/outlined_soft_light_text.dart';
 import 'package:jp_app/src/common/presentation/image_positioned.dart';
 import 'package:jp_app/src/common/presentation/text18.dart';
 import 'package:jp_app/src/page2.dart';
@@ -16,25 +19,30 @@ class Page1 extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          SvgBackground(imagePath: 'assets/svgs/background.svg'),
-          ImagePositioned(imagePath: 'assets/svgs/t1_screens.svg', left: 0, top: 0),
-          ImagePositioned(imagePath: 'assets/images/chick cupcakes_3D.png', left: 0, top: 96, width: 420),
-          ImagePositioned(imagePath: 'assets/svgs/t2_screens.svg', right: 0, top: 468, width: 420),
-          Positioned(
-            left: 16,
-            top: 597,
+          Positioned.fill(child: MyImage(imagePath: 'assets/images/background.png')),
+          MyPositioned(
+              left: -12, top: 40, child: OutlinedSoftLightText(text: 'SNACK', fontSize: 130, strokeWidth: 2.8)),
+          ImagePositioned(
+              imagePath: 'assets/images/chick cupcakes_3D.png', right: 0, top: 96 * facWidth, width: screenWidth),
+          MyPositioned(
+              left: -220,
+              bottom: 260,
+              child: OutlinedSoftLightText(text: 'SNACK SNACK', fontSize: 100, strokeWidth: 2.0)),
+          MyPositioned(
+            left: 22,
+            bottom: 80,
             child: Center(
               child: MyGlasRect(
-                width: 370,
+                width: 358,
                 height: 230,
                 child: Column(
                   children: [
-                    SizedBox(height: 30),
+                    MySizedBox(height: 30),
                     Text24('Feeling Snackish Today?'),
-                    SizedBox(height: 10),
+                    MySizedBox(height: 10),
                     Text14('Explore Angi’s most popular snack selection'),
                     Text14('and get instantly happy.'),
-                    SizedBox(height: 30),
+                    MySizedBox(height: 30),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -59,5 +67,18 @@ class Page1 extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class MySizedBox extends StatelessWidget {
+  final double height;
+  const MySizedBox({
+    super.key,
+    required this.height,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(height: height * facHeight);
   }
 }

@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:jp_app/src/common/global.dart';
-import 'package:jp_app/src/page2.dart';
 import 'package:jp_app/src/common/presentation/text12.dart';
 
 class MyGlasRect extends StatelessWidget {
@@ -34,14 +33,14 @@ class MyGlasRect extends StatelessWidget {
           ),
         );
 
-    double r = min(borderRadius, height / 2);
+    double r = min(borderRadius, height / 2) * facHeight;
     return ClipPath(
       clipper: CustomShapeClipper(r: r),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
         child: Container(
-          width: width,
-          height: height,
+          width: width * facWidth,
+          height: height * facHeight,
           decoration: BoxDecoration(
             color: isSelected ? Color(0xFFedc8ea) : Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(borderRadius),

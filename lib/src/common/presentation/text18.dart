@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jp_app/src/common/global.dart';
 
 class Text18 extends StatelessWidget {
   final String text;
@@ -19,7 +20,7 @@ class Text18 extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 18,
+        fontSize: 18 * facHeight,
         color: color,
         fontFamily: 'SFProText',
         fontWeight: fontWeight,

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jp_app/src/common/domain/cup.dart';
+import 'package:jp_app/src/common/global.dart';
 import 'package:jp_app/src/common/presentation/image_positioned.dart';
 import 'package:jp_app/src/common/presentation/my_container.dart';
 import 'package:jp_app/src/common/presentation/my_glas_rect.dart';
+import 'package:jp_app/src/common/presentation/my_image.dart';
+import 'package:jp_app/src/common/presentation/my_line_container.dart';
+import 'package:jp_app/src/common/presentation/my_line_painter.dart';
 import 'package:jp_app/src/common/presentation/text12.dart';
 import 'package:jp_app/src/common/presentation/text14.dart';
 import 'package:jp_app/src/common/presentation/text18.dart';
@@ -14,38 +18,21 @@ void buttonSheetPage2(BuildContext context, Cup cup) {
     isScrollControlled: true, // für volle Höhe
     backgroundColor: Colors.transparent,
     builder: (context) {
-      double width = MediaQuery.of(context).size.width;
-      double height = MediaQuery.of(context).size.height;
-
       return SizedBox(
-        width: width,
-        height: height,
+        width: screenWidth,
+        height: screenHeight,
         child: Container(
           color: Colors.black.withValues(alpha: 0.05),
           child: Stack(
             children: [
               ImagePositioned(imagePath: 'assets/svgs/background_button_sheet.svg', bottom: 0),
-              ImagePositioned(imagePath: cup.imagePath, width: 380, left: 0, top: 24),
+              ImagePositioned(imagePath: cup.imagePath, width: 380, left: 0, top: 16),
               Positioned(
                 top: 140,
                 right: 30,
                 child: GestureDetector(
                   onTap: () => Navigator.pop(context),
-                  child: Container(
-                    width: 30,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: Color(0xFF414544),
-                      border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.5),
-                        width: 1, // Stroke-Breite
-                      ),
-                      borderRadius: BorderRadius.circular(50),
-                    ),
-                    child: Center(
-                      child: Text18('x', color: Color(0x99EBEBF5), fontWeight: FontWeight.w600, letterSpacing: -0.0),
-                    ),
-                  ),
+                  child: MyLineContainer(linetype: LineType.Cross),
                 ),
               ),
               Column(
@@ -53,8 +40,8 @@ void buttonSheetPage2(BuildContext context, Cup cup) {
                   SizedBox(height: 320),
                   Center(
                     child: MyGlasRect(
-                      width: width - 44,
-                      height: 350,
+                      width: screenWidth - 44,
+                      height: 330,
                       child: Padding(
                         padding: const EdgeInsets.only(top: 16, left: 30, right: 30, bottom: 30),
                         child: Column(
@@ -84,7 +71,7 @@ void buttonSheetPage2(BuildContext context, Cup cup) {
                                     Text12('Ingredients',
                                         color: Color(0x99EBEBF5), fontWeight: FontWeight.w700, letterSpacing: -.08),
                                     SizedBox(height: 12),
-                                    Image.asset('assets/images/ingredients.png', fit: BoxFit.fitWidth),
+                                    MyImage(imagePath: 'assets/images/ingredients.png', width: 100),
                                   ],
                                 ),
                                 Column(
@@ -96,7 +83,7 @@ void buttonSheetPage2(BuildContext context, Cup cup) {
                                     Row(
                                       spacing: 8,
                                       children: [
-                                        Image.asset('assets/images/stars.png', fit: BoxFit.fitWidth),
+                                        Text12('􀋃􀋃􀋃􀋃􀋂', color: Color(0xFFf0f0f0)),
                                         Text12('4.0',
                                             color: Color(0x99EBEBF5), fontWeight: FontWeight.w700, letterSpacing: -.08),
                                       ],
@@ -171,48 +158,9 @@ void buttonSheetPage2(BuildContext context, Cup cup) {
                         Row(
                           spacing: 16,
                           children: [
-                            Container(
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF414544),
-                                border: Border.all(
-                                  color: Colors.white.withValues(alpha: 0.5),
-                                  width: 1, // Stroke-Breite
-                                ),
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Center(
-                                child: Text18('-',
-                                    color: Color(0x99EBEBF5), fontWeight: FontWeight.w600, letterSpacing: -0.0),
-                              ),
-                            ),
-                            Text(
-                              '1',
-                              style: TextStyle(
-                                color: Color(0x99EBEBF5),
-                                fontSize: 16,
-                                fontFamily: 'SFProDisplay',
-                                fontWeight: FontWeight.w600,
-                                letterSpacing: -0.0,
-                              ),
-                            ),
-                            Container(
-                              width: 30,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF414544),
-                                border: Border.all(
-                                  color: Colors.white.withValues(alpha: 0.5),
-                                  width: 1, // Stroke-Breite
-                                ),
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Center(
-                                child: Text18('+',
-                                    color: Color(0x99EBEBF5), fontWeight: FontWeight.w600, letterSpacing: -0.0),
-                              ),
-                            ),
+                            MyLineContainer(linetype: LineType.Minus),
+                            Text18('1'),
+                            MyLineContainer(linetype: LineType.Plus),
                           ],
                         ),
                       ],
@@ -223,7 +171,7 @@ void buttonSheetPage2(BuildContext context, Cup cup) {
                     onTap: () => Navigator.pop(context),
                     child: MyContainer(
                       text: Text18('Add To Order for 􁑐${cup.price}'),
-                      width: width - 44,
+                      width: screenWidth - 44,
                       strokeColorStart: Color(0xFFef3ed6),
                       strokeColorEnd: Color(0xFFf0c7eb),
                       containerColorStart: Color(0xFFF69EA3), // starting color (center)

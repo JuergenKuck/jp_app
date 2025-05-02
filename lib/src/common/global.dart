@@ -3,6 +3,22 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:jp_app/src/common/domain/cup.dart';
 
+bool isSetLateFinals = false;
+late final double screenWidth;
+late final double screenHeight;
+late final double facWidth;
+late final double facHeight;
+
+void stLateFinals(BuildContext context) {
+  if (!isSetLateFinals) {
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+    facWidth = screenWidth / 402;
+    facHeight = screenHeight / 874;
+    isSetLateFinals = true;
+  }
+}
+
 List<Cup> cups = [
   Cup(
     name: 'Mogli’s Cup',

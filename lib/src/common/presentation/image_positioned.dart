@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:path/path.dart' as p;
+import 'package:jp_app/src/common/presentation/my_image.dart';
+import 'package:jp_app/src/common/presentation/my_positioned.dart';
 
 class ImagePositioned extends StatelessWidget {
   final double? width;
@@ -22,13 +22,7 @@ class ImagePositioned extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget child;
-    String extension = p.extension(imagePath);
-    if (extension == '.svg') {
-      child = SvgPicture.asset(imagePath, width: width, fit: BoxFit.cover);
-    } else {
-      child = Image.asset(imagePath, width: width, fit: BoxFit.cover);
-    }
-    return Positioned(left: left, top: top, right: right, bottom: bottom, child: child);
+    MyImage child = MyImage(imagePath: imagePath, width: width);
+    return MyPositioned(left: left, top: top, right: right, bottom: bottom, child: child);
   }
 }

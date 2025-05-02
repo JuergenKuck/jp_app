@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jp_app/src/common/domain/cup.dart';
+import 'package:jp_app/src/common/global.dart';
+import 'package:jp_app/src/common/presentation/my_image.dart';
 import 'package:jp_app/src/common/presentation/text14.dart';
+import 'package:jp_app/src/page1.dart';
 
 class CupContainer extends StatelessWidget {
   final double width;
@@ -9,7 +12,7 @@ class CupContainer extends StatelessWidget {
 
   const CupContainer({
     super.key,
-    this.width = 185,
+    this.width = 200,
     this.height = 260,
     required this.cup,
   });
@@ -17,8 +20,8 @@ class CupContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width,
-      height: height,
+      width: width * facWidth,
+      height: height * facHeight,
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.bottomCenter,
@@ -37,21 +40,26 @@ class CupContainer extends StatelessWidget {
         borderRadius: BorderRadius.circular(33), // Gemeinsamer Radius
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16, top: 8),
+        padding: EdgeInsets.only(left: 16 * facWidth, right: 16 * facWidth, bottom: 16 * facHeight, top: 8 * facHeight),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(cup.imagePath, fit: BoxFit.fitWidth),
-            SizedBox(height: 8),
+            Padding(
+              padding: EdgeInsets.only(left: 0 * facWidth),
+              child: MyImage(imagePath: cup.imagePath),
+            ),
+            MySizedBox(height: 8),
             Text14(
               cup.name,
               color: Color(0xFFFFFFFF),
               fontWeight: FontWeight.w800,
               letterSpacing: -0.55,
-              height: 21.9 / 14.3,
+              //height: 21.9 / 14.3,
             ),
-            Text14(cup.description, height: 17.6 / 13.2),
-            SizedBox(height: 12),
+            Text14(
+              cup.description,
+            ), //height: 17.6 / 13.2),
+            MySizedBox(height: 18),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

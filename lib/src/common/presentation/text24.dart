@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jp_app/src/common/global.dart';
 
 class Text24 extends StatelessWidget {
   final String text;
@@ -19,7 +20,7 @@ class Text24 extends StatelessWidget {
       text,
       style: TextStyle(
         fontFamily: 'SFProDisplay',
-        fontSize: 24,
+        fontSize: 24 * facHeight,
         color: color,
         fontWeight: fontWeight,
         letterSpacing: letterSpacing,

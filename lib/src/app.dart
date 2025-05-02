@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jp_app/src/common/global.dart';
 import 'package:jp_app/src/page1.dart';
 
 class App extends StatelessWidget {
@@ -6,6 +7,8 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(theme: ThemeData(fontFamily: 'Inter'), home: const Page1());
+    stLateFinals(context);
+    return MaterialApp(
+        debugShowCheckedModeBanner: false, theme: ThemeData(fontFamily: 'SFProText'), home: const Page1());
   }
 }
